@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+}
+
+@layer components {
+  .nav-link {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium;
+  }
+  .nav-link__active {
+    @apply bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium;
+  }
+}
+
+@layer utilities {
+  .d-none {
+    display: none;
+  }
+}

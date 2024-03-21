@@ -17,7 +17,7 @@ interface SellerInfo {
   phone: string;
 }
 
-export interface Property {
+export interface IProperty {
   _id: "1";
   owner: string;
   name: string;

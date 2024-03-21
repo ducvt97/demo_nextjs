@@ -1,12 +1,13 @@
 import React from "react";
-import { Property } from "@/models/property";
+import { IProperty } from "@/models/property";
 import CardProperty from "./CardProperty";
 
 interface Props {
-  properties: Property[];
+  properties: IProperty[];
 }
 
 const ListCardProperty: React.FC<Props> = ({ properties }) => {
+  
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">

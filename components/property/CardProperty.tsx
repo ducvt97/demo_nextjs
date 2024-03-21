@@ -1,4 +1,4 @@
-import { Property } from "@/models/property";
+import { IProperty } from "@/models/property";
 import {
   faBath,
   faBed,
@@ -11,7 +11,7 @@ import Link from "next/link";
 import React from "react";
 
 interface Props {
-  propertyInfo: Property;
+  propertyInfo: IProperty;
 }
 
 const CardProperty: React.FC<Props> = ({

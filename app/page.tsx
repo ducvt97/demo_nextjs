@@ -1,12 +1,14 @@
 import Hero from "@/components/common/Hero";
 import InfoBoxes from "@/components/common/InfoBoxes";
 import ListCardProperty from "@/components/property/ListCardProperty";
-import { Property } from "@/models/property";
+import { IProperty } from "@/models/property";
 import propertiesJSON from "@/properties.json";
+import { getAll } from "@/services/property.service";
 
-const properties = propertiesJSON as Property[];
+// const properties = propertiesJSON as IProperty[];
 
-export default function Home() {
+export default async function Home() {
+  const properties = await getAll();
   return (
     <main>
       <Hero />

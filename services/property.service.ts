@@ -1,10 +1,27 @@
-import { IProperty } from "@/models/property";
-
-const BASE_URL = `${process.env.PUBLIC_API_DOMAIN}/properties`;
+const BASE_URL = `${process.env.NEXT_PUBLIC_API_DOMAIN}/properties`;
 
 export const getAll = async () => {
-  const res = await fetch(`${BASE_URL}/`);
-  console.log(res.json());
+  try {
+    const res = await fetch(BASE_URL);
+    if (!res.ok) {
+      throw new Error("Error fetching properties.");
+    }
+    const resBody = await res.json();
+    return resBody;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-  return res.json();
+export const getById = async (id: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`);
+    if (!res.ok) {
+      throw new Error("Error fetching properties.");
+    }
+    const resBody = await res.json();
+    return resBody;
+  } catch (error) {
+    console.log(error);
+  }
 };

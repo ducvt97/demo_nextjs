@@ -12,6 +12,9 @@
   .nav-link__active {
     @apply bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium;
   }
+  .card-common {
+    @apply bg-white p-6 rounded-lg shadow-md;
+  }
 }
 
 @layer utilities {

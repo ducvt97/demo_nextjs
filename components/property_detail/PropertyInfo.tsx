@@ -94,7 +94,7 @@ const PropertyInfo: React.FC<Props> = ({ info }) => {
           ))}
         </ul>
       </div>
-      <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+      {/* <div className="bg-white p-6 rounded-lg shadow-md mt-6">
         <div
           className="mapboxgl-map"
           style="position: relative; width: 100%; height: 500px;"
@@ -183,7 +183,7 @@ const PropertyInfo: React.FC<Props> = ({ info }) => {
           </div>
           <div mapboxgl-children="" style="height: 100%;"></div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };

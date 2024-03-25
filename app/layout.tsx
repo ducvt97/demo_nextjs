@@ -9,6 +9,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import NavBar from "@/components/common/NavBar";
 import Footer from "@/components/common/Footer";
+import AuthProvider from "@/components/common/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 config.autoAddCss = false;
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

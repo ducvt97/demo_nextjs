@@ -10,6 +10,7 @@ interface ButtonProps extends React.PropsWithChildren {
   iconRight?: IconDefinition;
   children?: React.ReactNode;
   className?: string;
+  onClick?: React.ReactEventHandler;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,9 +21,11 @@ const Button: React.FC<ButtonProps> = ({
   iconRight,
   children,
   className,
+  onClick,
 }: ButtonProps) => {
   return (
     <button
+      onClick={onClick}
       type={type}
       className={`inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-1 focus:bg-primary-accent-300 focus:shadow-primary-1 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong ${className}`}
     >

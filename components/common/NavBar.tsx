@@ -20,6 +20,7 @@ import {
   useSession,
 } from "next-auth/react";
 import { BuiltInProviderType } from "next-auth/providers/index";
+import Image from "next/image";
 
 const NavBar = () => {
   const { data: session } = useSession();
@@ -27,12 +28,16 @@ const NavBar = () => {
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
   > | null>(null);
+
   const [showNavList, setShowNavList] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
   const currentPath = usePathname();
   const activeLink = (path: string) =>
     path === currentPath ? "nav-link__active" : "nav-link";
+
+  const profileImgDefault =
+    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
   useEffect(() => {
     const retrieveProviders = async () => {
@@ -79,8 +84,8 @@ const NavBar = () => {
                 </Link>
                 {session && (
                   <Link
-                    href="/add-property"
-                    className={activeLink("/add-property")}
+                    href="/properties/add"
+                    className={activeLink("/properties/add")}
                   >
                     Add Property
                   </Link>
@@ -101,15 +106,6 @@ const NavBar = () => {
                   </Button>
                 ))
               : null}
-            {session && (
-              <Button
-                iconLeft={faRightFromBracket}
-                className="d-none md:block"
-                onClick={() => signOut()}
-              >
-                Logout
-              </Button>
-            )}
             {/* <button
               type="button"
               className="relative rounded-full size-7 text-lg/4 bg-gray-800 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -129,12 +125,12 @@ const NavBar = () => {
                     aria-haspopup="true"
                     onClick={() => setShowMenu(!showMenu)}
                   >
-                    <span className="absolute -inset-1.5"></span>
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
+                    <Image
+                      width={32}
+                      height={32}
+                      className="rounded-full"
+                      src={session.user?.image || profileImgDefault}
+                      alt="Profile image"
                     />
                   </button>
                 </div>
@@ -167,15 +163,13 @@ const NavBar = () => {
                     >
                       Settings
                     </Link>
-                    <Link
-                      href="#"
+                    <button
                       className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
                       tabIndex={-1}
-                      id="user-menu-item-2"
+                      onClick={() => signOut()}
                     >
                       Sign out
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>
@@ -219,14 +213,6 @@ const NavBar = () => {
                   </Button>
                 ))
               : null}
-            {session && (
-              <Button
-                iconLeft={faRightFromBracket}
-                onClick={() => signOut()}
-              >
-                Logout
-              </Button>
-            )}
           </div>
         </div>
       )}

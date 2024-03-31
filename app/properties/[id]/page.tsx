@@ -4,20 +4,12 @@ import PropertyInfo from "@/components/property_detail/PropertyInfo";
 import PropertyRightSide from "@/components/property_detail/PropertyRightSide";
 import { IProperty } from "@/models/property";
 import { getById } from "@/services/property.service";
-import {
-  faFacebook,
-  faTwitter,
-  faWhatsapp,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faArrowLeft,
-  faBookmark,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default async function PropertyDetail() {
   const { id } = useParams();
@@ -40,7 +32,13 @@ export default async function PropertyDetail() {
         <section>
           <div className="container-xl m-auto">
             <div className="grid grid-cols-1">
-              <img alt="" className="object-cover h-[400px] w-full" />
+              <Image
+                width={0}
+                height={0}
+                className="object-cover h-[400px] w-full"
+                src={propertyDetail.images[0]}
+                alt="Cover image"
+              />
             </div>
           </div>
         </section>

@@ -1,7 +1,6 @@
 import Hero from "@/components/common/Hero";
 import InfoBoxes from "@/components/common/InfoBoxes";
 import ListCardProperty from "@/components/property/ListCardProperty";
-import { IProperty } from "@/models/property";
 import { getAll } from "@/services/property.service";
 
 export default async function Home() {

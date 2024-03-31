@@ -1,13 +1,10 @@
 import React from "react";
 
-import propertiesJSON from "@/properties.json";
-import { IProperty } from "@/models/property";
-
 import ListCardProperty from "@/components/property/ListCardProperty";
+import { getAll } from "@/services/property.service";
 
-const properties = propertiesJSON as IProperty[];
-
-const PropertiesPage = () => {
+const PropertiesPage = async () => {
+  let { properties } = await getAll();
   return <ListCardProperty properties={properties} />;
 };
 

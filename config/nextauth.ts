@@ -41,7 +41,7 @@ export const authOptions = {
       try {
         await dbConnect();
         const user = await User.findOne({ email: _.session.user?.email });
-        return { ..._.session, id: user.id };
+        return { ..._.session, user: { ..._.session.user, id: user.id } };
       } catch (error) {
         console.log(error);
       }

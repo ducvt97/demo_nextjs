@@ -2,7 +2,7 @@ const BASE_URL = `${process.env.NEXT_PUBLIC_API_DOMAIN}/properties`;
 
 export const getAll = async () => {
   try {
-    const res = await fetch(BASE_URL);
+    const res = await fetch(BASE_URL, { cache: "no-cache" });
     if (!res.ok) {
       throw new Error("Error fetching properties.");
     }

@@ -25,3 +25,16 @@ export const getById = async (id: string) => {
     console.log(error);
   }
 };
+
+export const getByUser = async (id: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}/user/${id}`);
+    if (!res.ok) {
+      throw new Error("Error fetching properties.");
+    }
+    const resBody = await res.json();
+    return resBody;
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default async function PropertyDetail() {
+export default function PropertyDetail() {
   const { id } = useParams();
   const [propertyDetail, setPropertyDetail] = useState<IProperty | null>(null);
 

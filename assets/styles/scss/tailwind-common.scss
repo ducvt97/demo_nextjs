@@ -23,6 +23,26 @@
   .input {
     @apply border rounded w-full py-2 px-3;
   }
+
+  // Button
+  .btn {
+    @apply inline-block rounded uppercase leading-normal transition duration-150 ease-in-out hover:shadow-primary-1 focus:shadow-primary-1 focus:outline-none focus:ring-0 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong;
+    &.sm {
+      @apply px-6 pb-2 pt-2.5 text-xs font-medium;
+    }
+    &.md {
+      @apply px-6 pb-2 pt-2.5 text-xs font-medium;
+    }
+    &.lg {
+      @apply px-6 pb-2 pt-2.5 text-xs font-medium;
+    }
+    &.primary {
+      @apply bg-primary text-white hover:bg-primary-accent-300 focus:bg-primary-accent-300 active:bg-primary-600;
+    }
+    &.delete {
+      @apply bg-red-500 text-white hover:bg-red-600 focus:bg-red-600 active:bg-red-800;
+    }
+  }
 }
 
 @layer utilities {

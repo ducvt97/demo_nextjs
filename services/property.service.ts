@@ -38,3 +38,19 @@ export const getByUser = async (id: string) => {
     console.log(error);
   }
 };
+
+export const deleteProperty = async (id: string) => {
+  try {
+    console.log('fvdfv');
+    const res = await fetch(`${BASE_URL}/${id}`, { method: "DELETE" });
+    console.log(res);
+    
+    if (!res.ok) {
+      throw new Error("Error deleting property.");
+    }
+    const resBody = await res.json();
+    return resBody;
+  } catch (error) {
+    console.log(error);
+  }
+};

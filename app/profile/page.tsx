@@ -6,7 +6,7 @@ import Image from "next/image";
 import Button from "@/components/buttons/Button";
 import { useSession } from "next-auth/react";
 import { IProperty } from "@/models/property";
-import { getByUser } from "@/services/property.service";
+import { deleteProperty, getByUser } from "@/services/property.service";
 
 interface SessionUser {
   id?: string;
@@ -37,6 +37,13 @@ const ProfilePage: React.FC = () => {
     fetchUserProperties(user?.id);
   }, [session]);
 
+  const handleDeleteProperty = async (id: string) => {
+    const res = await deleteProperty(id);
+    if (!res) {
+      console.log("dfvfd");
+    }
+  };
+
   const generateProperties = () => {
     return properties.map((property) => (
       <div className="mb-10" key={property._id}>
@@ -60,7 +67,11 @@ const ProfilePage: React.FC = () => {
           <Button className="mr-3">
             <Link href={`/properties/${property._id}/edit`}>Edit</Link>
           </Button>
-          <Button variant="delete" type="button">
+          <Button
+            variant="delete"
+            type="button"
+            onClick={() => handleDeleteProperty(property._id)}
+          >
             Delete
           </Button>
         </div>

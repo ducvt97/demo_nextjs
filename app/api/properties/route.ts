@@ -74,13 +74,58 @@ export const POST = async (request: NextRequest) => {
       },
       images: imagesUploaded,
     };
-    console.log(property);
 
     const newProperty = new Property(property);
     await newProperty.save();
     return NextResponse.redirect(
       `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`
     );
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong.", { status: 500 });
+  }
+};
+
+export const DELETE = async (_: any, query: { params: { id: string } }) => {
+  try {
+    await dbConnect();
+    const propertyId = query.params.id;
+    console.log(propertyId);
+    
+    const user = await getSessionUser();
+
+    if (!user) {
+      return NextResponse.json(
+        { message: "Authentication failed." },
+        { status: 401 }
+      );
+    }
+
+    const property = await Property.findById(propertyId);
+    if (!property) {
+      return NextResponse.json(
+        { error: "Property not found" },
+        { status: 404 }
+      );
+    }
+
+    if (user.id !== property.owner) {
+      return NextResponse.json(
+        { error: "Authorization failed" },
+        { status: 401 }
+      );
+    }
+
+    // Delete images in Cloudinary
+    for (let image of property.images) {
+      console.log(image);
+      await cloudinary.uploader.destroy(`property-demo/${image}`);
+    }
+
+    // Delete record in DB
+    await property.deleteOne();
+
+    return new Response("Property deleted", { status: 200 });
   } catch (error) {
     console.log(error);
     return new Response("Something went wrong.", { status: 500 });

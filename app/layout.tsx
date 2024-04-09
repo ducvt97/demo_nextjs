@@ -6,10 +6,12 @@ import "@/assets/styles/css/reset.css";
 import "@/assets/styles/css/normalize.css";
 import "@/assets/styles/scss/tailwind-common.scss";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import NavBar from "@/components/common/NavBar";
 import Footer from "@/components/common/Footer";
 import AuthProvider from "@/components/common/AuthProvider";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 config.autoAddCss = false;
@@ -31,6 +33,7 @@ export default function RootLayout({
           <NavBar />
           {children}
           <Footer />
+          <ToastContainer />
         </AuthProvider>
       </body>
     </html>

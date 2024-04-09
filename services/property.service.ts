@@ -41,12 +41,27 @@ export const getByUser = async (id: string) => {
 
 export const deleteProperty = async (id: string) => {
   try {
-    console.log('fvdfv');
     const res = await fetch(`${BASE_URL}/${id}`, { method: "DELETE" });
-    console.log(res);
-    
+
     if (!res.ok) {
       throw new Error("Error deleting property.");
+    }
+    const resBody = await res.json();
+    return resBody;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateProperty = async (id: string, body: any) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      throw new Error("Error updating property.");
     }
     const resBody = await res.json();
     return resBody;

@@ -7,6 +7,7 @@ import Button from "@/components/buttons/Button";
 import { useSession } from "next-auth/react";
 import { IProperty } from "@/models/property";
 import { deleteProperty, getByUser } from "@/services/property.service";
+import { toast } from "react-toastify";
 
 interface SessionUser {
   id?: string;
@@ -38,9 +39,18 @@ const ProfilePage: React.FC = () => {
   }, [session]);
 
   const handleDeleteProperty = async (id: string) => {
-    const res = await deleteProperty(id);
-    if (!res) {
-      console.log("dfvfd");
+    try {
+      const res = await deleteProperty(id);
+      if (!res) {
+        toast.error("Error deleting this property");
+      }
+      setProperties((properties) =>
+        properties.filter((property) => property._id !== id)
+      );
+      toast.success(res.message);
+    } catch (error: any) {
+      toast.error(error);
+      console.log(error);
     }
   };
 
@@ -54,6 +64,7 @@ const ProfilePage: React.FC = () => {
             height="100"
             className="h-32 w-full rounded-md object-cover"
             src={property.images[0]}
+            priority
           />
         </a>
         <div className="mt-2">
@@ -90,11 +101,11 @@ const ProfilePage: React.FC = () => {
                 <div className="mb-4">
                   <Image
                     alt="User avatar"
-                    loading="lazy"
                     width="200"
                     height="200"
                     className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
                     src={user.image || defaultAvatar}
+                    priority
                   />
                 </div>
                 <h2 className="text-2xl mb-4">

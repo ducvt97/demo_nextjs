@@ -69,3 +69,19 @@ export const updateProperty = async (id: string, body: any) => {
     console.log(error);
   }
 };
+
+export const bookmarkProperty = async (id: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/bookmark`, {
+      method: "POST",
+    });
+
+    if (!res.ok) {
+      throw new Error("Error bookmarking property.");
+    }
+    const resBody = await res.json();
+    return resBody;
+  } catch (error) {
+    console.log(error);
+  }
+};

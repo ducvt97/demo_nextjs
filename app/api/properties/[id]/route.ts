@@ -2,8 +2,7 @@ import cloudinary from "@/config/cloudinary";
 import dbConnect from "@/config/dbConnect";
 import Property from "@/models/property.model";
 import { getSessionUser } from "@/utils/auth";
-import { NextApiRequest } from "next";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export const GET = async (request: any, query: { params: { id: string } }) => {
   try {

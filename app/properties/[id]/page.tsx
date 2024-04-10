@@ -56,9 +56,9 @@ export default function PropertyDetail() {
 
         <section className="bg-blue-50">
           <div className="container m-auto py-10 px-6">
-            <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-10 w-full gap-6">
               <PropertyInfo info={propertyDetail} />
-              <PropertyRightSide />
+              <PropertyRightSide propertyId={id as string} />
             </div>
           </div>
         </section>

@@ -16,7 +16,7 @@ interface Props {
 
 const PropertyInfo: React.FC<Props> = ({ info }) => {
   return (
-    <main>
+    <main className="col-span-7">
       <div className="card-common text-center md:text-left">
         <div className="text-gray-500 mb-4">{info.type}</div>
         <h1 className="text-3xl font-bold mb-4">{info.name}</h1>

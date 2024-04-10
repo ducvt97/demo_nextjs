@@ -8,13 +8,8 @@ import { useSession } from "next-auth/react";
 import { IProperty } from "@/models/property";
 import { deleteProperty, getByUser } from "@/services/property.service";
 import { toast } from "react-toastify";
+import { SessionUser } from "@/models/user";
 
-interface SessionUser {
-  id?: string;
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  image?: string | null | undefined;
-}
 const defaultAvatar =
   "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.veryicon.com%2Ficons%2Fmiscellaneous%2Frookie-official-icon-gallery%2F225-default-avatar.html&psig=AOvVaw0ysjrHyvPGTC1B1uCZ9k5J&ust=1712077982935000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMja7dHBoYUDFQAAAAAdAAAAABAE";
 

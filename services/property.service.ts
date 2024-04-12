@@ -85,3 +85,19 @@ export const bookmarkProperty = async (id: string) => {
     console.log(error);
   }
 };
+
+export const searchProperty = async (location: string, type: string) => {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/search?location=${location || ""}&type=${type || ""}`
+    );
+
+    if (!res.ok) {
+      throw new Error("Error searching property.");
+    }
+    const resBody = await res.json();
+    return resBody;
+  } catch (error) {
+    console.log(error);
+  }
+};

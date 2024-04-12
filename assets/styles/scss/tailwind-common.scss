@@ -23,6 +23,9 @@
   .input {
     @apply border rounded w-full py-2 px-3;
   }
+  .select-input {
+    @apply px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500;
+  }
   .form-label {
     @apply block text-gray-700 text-sm font-bold mb-2;
   }

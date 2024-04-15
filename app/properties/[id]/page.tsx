@@ -35,9 +35,10 @@ export default function PropertyDetail() {
               <Image
                 width={0}
                 height={0}
-                className="object-cover h-[400px] w-full"
+                className="h-[400px] w-full"
                 src={propertyDetail.images[0]}
                 alt="Cover image"
+                unoptimized
               />
             </div>
           </div>

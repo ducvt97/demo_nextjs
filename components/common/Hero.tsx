@@ -3,7 +3,7 @@ import React, { FormEvent, useState } from "react";
 import Button from "../buttons/Button";
 import { useRouter } from "next/navigation";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const [location, setLocation] = useState("");
   const [type, setType] = useState("All");
 
